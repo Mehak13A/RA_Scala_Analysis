@@ -1,0 +1,7 @@
+pandas==3.1.0
+numpy==2.5.4
+scipy==1.18.1
+scikit-learn==1.9.0
+matplotlib==3.11.2
+decoupler==2.3.0
+gprofiler-official==1.0.0
