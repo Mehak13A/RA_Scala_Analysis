@@ -1,0 +1,90 @@
+STEP 1  Selecting cells
+    646  Reconstructed cells in the morphology table
+    371  Inhibitory cells
+    371  Reconstruction flagged in the repository errata removed
+    371  No transcriptomic exclusion reason recorded by the authors
+    363  Family among ['Pvalb', 'Sst', 'Vip', 'Lamp5']
+    363  Family has at least 20 cells
+    363  Soma depth available
+    361  Complete set of shape measurements
+    358  At least 50,000 exon reads in the count matrix
+  Kept: 358 neurons, 49 shape measurements, 42466 genes
+  Cells per family: Pvalb 144, Sst 104, Vip 63, Lamp5 47
+
+STEP 2  Summarising shape
+  shape_axis_1 (Dendrite size and reach): 18.3% of variation, depth r = +0.43
+  shape_axis_2 (Axon size and spread): 17.0% of variation, depth r = +0.16
+  shape_axis_3 (Dendrite branching): 8.2% of variation, depth r = -0.19
+  shape_axis_4 (Axon branching): 5.9% of variation, depth r = -0.08
+  shape_axis_5 (Axon vertical extent): 5.4% of variation, depth r = -0.13
+  Together the 5 axes explain 54.8% of shape variation
+
+STEP 3  Preparing expression
+  20551 genes detected in at least 10 cells
+  1500 highly variable genes selected with the authors' rule
+
+STEP 4  Baseline: sparse regression from genes to shape, no covariates
+  320 genes selected; 9 are known family markers: ['Calb1', 'Calb2', 'Crh', 'Lamp5', 'Pvalb', 'Reln', 'Slc6a1', 'Sst', 'Vip']
+  Cross validated R squared per axis: 0.26, 0.41, 0.32, 0.07, 0.14
+
+STEP 5  Adjusted analysis: family, soma depth and sequencing depth as covariates
+  Estimated share of gene by axis tests with no real effect (pi0): 0.91
+  Gene by axis associations at q < 0.05: 0
+    shape_axis_1: 0 genes
+    shape_axis_2: 0 genes
+    shape_axis_3: 0 genes
+    shape_axis_4: 0 genes
+    shape_axis_5: 0 genes
+  Ten strongest adjusted associations (gene, axis, effect, p, q):
+    Tmem255a     shape_axis_2  effect -0.533  p = 1.32e-05  q = 0.090
+    Penk         shape_axis_2  effect -0.654  p = 4.80e-05  q = 0.133
+    Col16a1      shape_axis_5  effect -0.327  p = 6.16e-05  q = 0.133
+    Igfbp4       shape_axis_2  effect -0.487  p = 7.98e-05  q = 0.133
+    Qpct         shape_axis_5  effect -0.351  p = 9.73e-05  q = 0.133
+    Ackr3        shape_axis_4  effect +0.340  p = 1.89e-04  q = 0.195
+    Lama4        shape_axis_2  effect +0.548  p = 2.11e-04  q = 0.195
+    Fmn1         shape_axis_4  effect +0.349  p = 2.34e-04  q = 0.195
+    Baiap3       shape_axis_2  effect -0.450  p = 2.79e-04  q = 0.195
+    Clu          shape_axis_1  effect +0.492  p = 2.86e-04  q = 0.195
+  Penalty chosen for the gene model on residuals: 0.9237 (baseline penalty 0.4175)
+  Agreement between genes only and family and depth only predictions (r): 0.75, 0.89, 0.85, 0.60, 0.79
+  shape_axis_1: R2 covariates only 0.32, genes only 0.26, covariates then genes 0.32, gain from genes -0.00
+  shape_axis_2: R2 covariates only 0.40, genes only 0.41, covariates then genes 0.40, gain from genes +0.00
+  shape_axis_3: R2 covariates only 0.31, genes only 0.32, covariates then genes 0.31, gain from genes +0.00
+  shape_axis_4: R2 covariates only 0.09, genes only 0.07, covariates then genes 0.09, gain from genes -0.00
+  shape_axis_5: R2 covariates only 0.17, genes only 0.14, covariates then genes 0.17, gain from genes +0.00
+
+STEP 5b  Within family continuity: do transcriptomic neighbours have similar shapes?
+  Pvalb: 144 cells, Mantel r = +0.027, null 95th percentile +0.044, p = 0.179
+  Sst: 104 cells, Mantel r = +0.098, null 95th percentile +0.047, p = 0.010
+  Vip: 63 cells, Mantel r = +0.037, null 95th percentile +0.061, p = 0.174
+  Lamp5: 47 cells, Mantel r = +0.174, null 95th percentile +0.071, p = 0.005
+
+STEP 6  Statistical support
+    permutation 50 of 200
+    permutation 100 of 200
+    permutation 150 of 200
+    permutation 200 of 200
+  shape_axis_1: gene R2 on residual -0.011, null 95th percentile 0.001, permutation p = 0.831
+  shape_axis_2: gene R2 on residual 0.003, null 95th percentile 0.001, permutation p = 0.035
+  shape_axis_3: gene R2 on residual -0.007, null 95th percentile -0.001, permutation p = 0.607
+  shape_axis_4: gene R2 on residual -0.002, null 95th percentile -0.002, permutation p = 0.104
+  shape_axis_5: gene R2 on residual -0.006, null 95th percentile -0.002, permutation p = 0.473
+  Genes selected in at least 70% of 100 bootstraps: 0
+  Label confidence >= 0.6: 274 cells; effect sizes of the 100 strongest gene by axis associations correlate with the full run at r = 0.98
+  Label confidence >= 0.7: 237 cells; effect sizes of the 100 strongest gene by axis associations correlate with the full run at r = 0.97
+  Label confidence >= 0.8: 189 cells; effect sizes of the 100 strongest gene by axis associations correlate with the full run at r = 0.95
+
+STEP 7  Function
+  Transcription factors scored: 668; associations at q < 0.05: 0
+  Five strongest transcription factor associations (factor, axis, effect, p, q):
+    Smad4        shape_axis_1  effect -0.531  p = 1.03e-04  q = 0.151
+    Smad3        shape_axis_1  effect -0.532  p = 1.21e-04  q = 0.151
+    Jun          shape_axis_1  effect -0.507  p = 1.50e-04  q = 0.151
+    Usf1         shape_axis_1  effect -0.495  p = 2.83e-04  q = 0.214
+    Phf20        shape_axis_2  effect +0.415  p = 4.63e-04  q = 0.235
+  Enrichment completed: 0 enriched gene sets written (enrichment runs only on genes that are both bootstrap stable and at q < 0.05)
+
+Figure written: figure_main.png
+
+Done. Outputs: results_gene_associations.csv, results_model_summary.csv, results_function.csv, figure_main.png
