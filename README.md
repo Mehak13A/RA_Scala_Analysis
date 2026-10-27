@@ -3,7 +3,7 @@
 Gene expression and morphology in inhibitory neurons of mouse motor cortex, using
 the Patch-seq data of Scala et al. (2021).
 
-Author: Mehak Agrawal.
+Author: Mehak Agrawal
 
 ## 1. Problem statement
 
